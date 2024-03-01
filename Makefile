@@ -1,15 +1,13 @@
-CFLAGS = -g
-LDFLAGS =
-CC = gcc
-EXES = nmea test
-
-# rules are "target: <dependencies>" followed by zero or more
-# lines of actions to create the target
 #
-all: $(EXES)
+# file:    Makefile
+#
+CFLAGS = -g -Wall -pedantic 
+LDLIBS = -lcheck -lm -lrt
 
-nmea: nmea.o test.o
-	$(CC) -g $^ -o $@ $(LDFLAGS)
+all: test
 
-clean:
-	rm -f *.o $(EXES)
+# this uses the following default build rules:
+# .c to .o: $(CC) $(CFLAGS) file.c -c -o file.o
+# multiple .o to exe. : $(CC) $(LDFLAGS) file.o [file.o..] $(LDLIBS) -o exe
+
+test: test.o nmea.o

@@ -48,3 +48,4 @@ typedef struct nema {
 
 dm_t parse_pos(char* pos_str);
 int parse_nmea(char nmea_str[], nmea_t* result);
+void print_nmea(nmea_t* nmea);

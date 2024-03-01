@@ -142,6 +142,26 @@ int parse_nmea(char nmea_str[], nmea_t* result) {
   return 0;
 }
 
+void print_nmea(nmea_t* nmea) {
+  printf("Type: %s\nTime: %d:%d:%d:%d\n Lat: %dd, %fmin\nDir: %d\nLon: %dd, %fmin\nDir: %d\nSats: %d\nAlt: %f u%d\nCksm:%s\n", 
+      nmea->msg_type, 
+      nmea->timestamp.hour, 
+      nmea->timestamp.min, 
+      nmea->timestamp.sec, 
+      nmea->timestamp.ms, 
+      nmea->latitude.degrees, 
+      nmea->latitude.minutes, 
+      nmea->ns, 
+      nmea->longitude.degrees, 
+      nmea->longitude.minutes, 
+      nmea->ew, 
+      nmea->sats, 
+      nmea->altitude, 
+      nmea->alt_units, 
+      nmea->checksum
+      );
+}
+
 // int main() {
   // test data for now
 //  char string[] = "$GPGGA,181908.00,3404.7041778,N,07044.3966270,W,13,495.144,M*31";
